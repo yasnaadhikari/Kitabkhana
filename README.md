@@ -8,13 +8,11 @@ See [Demo](#user-content-demo-) 🎥
 
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://kitabe-app.herokuapp.com/)
 [![Build Status](https://travis-ci.com/Praful932/Kitabe.svg?token=XKcoN48yFyATXWUZ6d8j&branch=master)](https://travis-ci.com/Praful932/Kitabe) 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Praful932/Kitabe/blob/master/CONTRIBUTING.md)
-[![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) <br>
+
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FPraful932%2FKitabe&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Praful932/Kitabe/graphs/commit-activity)
 ![GitHub stars](https://img.shields.io/github/stars/Praful932/Kitabe?style=social) ![GitHub forks](https://img.shields.io/github/forks/Praful932/Kitabe?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/Praful932/Kitabe?style=social)
 
-For Contributing 💜 and setting Up head [here](https://github.com/Praful932/Kitabe/blob/master/CONTRIBUTING.md).
 
 # Contents
 - [Demo](#user-content-demo-) 🎥
@@ -26,16 +24,8 @@ For Contributing 💜 and setting Up head [here](https://github.com/Praful932/Ki
     - [Final Result](#final-result-) 😁
 - [Project Structure](#project-structure-%EF%B8%8F) 💁‍♀️
 - [To Do](#to-do-) 🎯
-- [Contribute](https://github.com/Praful932/Kitabe/blob/master/CONTRIBUTING.md) 🧏‍♂️
 - [Notebooks and Files](#notebooks-and-files-) 📓
 - [References](#references-) 😇
-- [Contributors](#contributors-) 🤗
-- [License](#license-) ✍
-
-### Demo 🎥
-
-![kitabe](https://user-images.githubusercontent.com/45713796/98460071-f6a23980-21c6-11eb-881f-ba0f75896751.gif)<br>
-[Live Application](https://kitabe-app.herokuapp.com/) 🌐
 
 ### Objective ✍
 Our objective is to build an application for all Book Lovers ♥ like us out there where all you have to 
@@ -134,31 +124,3 @@ Kitabe
 - [Dataset](https://github.com/zygmuntz/goodbooks-10k)
 - [Count Vectorizer](https://www.kaggle.com/sasha18/recommend-books-using-count-tfidf-on-titles)
 - [Books2Rec](https://github.com/dorukkilitcioglu/books2rec)
-
-### Contributors 🤗
-![2](https://contributors-img.web.app/image?repo=Praful932/Kitabe)
-
-### License ✍
-```
-MIT License
-
-Copyright (c) 2020 Praful Mohanan & Prajakta Mane
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
