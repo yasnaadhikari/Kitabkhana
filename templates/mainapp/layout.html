@@ -283,6 +283,7 @@
             }).blur(function() {
                 $('#search-dropdown').hide(150);
             })
+            
             //for rating a book
         $(function() {
 
@@ -293,12 +294,14 @@
             });
 
         });
+        
         // when hover over rate
         function rateStart(obj) {
             var bookid = obj.getAttribute('data-book-id');
             $('#button-text-' + bookid).css('display', 'none');
             $('#rate-' + bookid).css('display', 'block');
         }
+        
         // onclick rate
         function rateBook(obj) {
             var bookid = obj.getAttribute('data-book-id');
@@ -323,6 +326,7 @@
                 }
             });
         }
+        
         // when hover out rate
         function finishRate(obj) {
             var bookid = obj.getAttribute('data-book-id');
@@ -404,6 +408,7 @@
             }
         });
     </script>
+    
     <!-- End Search Bar Script -->
     {% block script %} 
     {% endblock script %}
