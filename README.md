@@ -10,7 +10,6 @@ Simply Rate ⭐ some books and get immediate recommendations tailored for you �
 
 
 # Contents
-- [Demo](#user-content-demo-) 🎥
 - [Approach](#objective-) 🧐
     - [Objective](#objective-) ✍
     - [Dataset](#dataset-) 🧾
