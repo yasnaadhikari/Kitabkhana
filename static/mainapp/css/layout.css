@@ -1,6 +1,6 @@
 html,
 body {
-    background-color: #ffdab9;
+    background-color: #FFF;
     height: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -8,6 +8,8 @@ body {
 
 #navbarNav {
     float: right;
+    height: max-content;
+    width: max-content;
 }
 
 

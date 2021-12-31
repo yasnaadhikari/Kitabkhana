@@ -124,3 +124,8 @@ Kitabe
 - [Dataset](https://github.com/zygmuntz/goodbooks-10k)
 - [Count Vectorizer](https://www.kaggle.com/sasha18/recommend-books-using-count-tfidf-on-titles)
 - [Books2Rec](https://github.com/dorukkilitcioglu/books2rec)
+
+
+username: yasnadon
+email: yasna@gmail.com
+password: yasnadon

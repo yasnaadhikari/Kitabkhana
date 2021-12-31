@@ -28,7 +28,7 @@
     <!-- css -->
     <link rel="stylesheet" href="{% static 'mainapp/css/layout.css' %}">
     <!-- icon -->
-    <link rel="icon" href="{% static 'mainapp/png/KitabkhanaLogo.png' %}" />
+    <link rel="icon" href="{% static 'mainapp/png/KLogo.png' %}" />
     <title>
         {% block title %} 
         {% endblock title %}
@@ -42,7 +42,7 @@
         <a name='top'>
             <div id="topheader">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="/"><img class="navbrandimg" src="{% static 'mainapp/png/KitabkhanaLogo.png' %}"></a>
+                    <a class="navbar-brand" href="/"><img class="navbrandimg" src="{% static 'mainapp/png/KLogo.png' %}" height="55" width="100"></a>
                     <!-- Search Bar -->
                     <div class="searchbar" id="searchdropdown">
                         <input type="text" id="bookName" onkeyup="myFunction()" placeholder="&#xf002    Search for books" title="Type in a name" style="outline: none;font-family:FontAwesome, kumbh sans;">
@@ -70,7 +70,7 @@
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="nav-icon-s fa fa-bookmark fa-2x" aria-hidden="true"></i><br>Library
+                                        <i class="nav-icon-s fa fa-bookmark fa-2x" aria-hidden="true"></i><br> My Library
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="{% url 'book_recommendations' %}"><i class="material-icons" style="vertical-align: -6px;">auto_stories</i>&nbsp; Your Read</a>
