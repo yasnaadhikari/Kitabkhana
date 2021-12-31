@@ -2,7 +2,7 @@
 ![1](https://user-images.githubusercontent.com/45713796/98271308-d18aac80-1fb5-11eb-9db3-dda942cc1b07.png)
 
 
-**Kitabe** (*Book in Hindi*) is a Book Recommendation System built for all you Book Lovers📖.
+**Kitabkhana** is a Book Recommendation System built for all you Book Lovers📖.
 Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩.<br>
 See [Demo](#user-content-demo-) 🎥
 
@@ -74,7 +74,7 @@ The [Image](https://coggle.it/diagram/X6TOUxlMvSl8FBM4/t/dataset/7083ac4f2de3951
 
 ### Project Structure 💁‍♀️
 ```
-Kitabe
+Kitabkhana
 │   
 ├───BookRecSystem               # Main Project Directory
 │       

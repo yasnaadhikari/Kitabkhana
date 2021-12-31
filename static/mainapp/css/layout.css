@@ -1,4 +1,8 @@
-html,
+html{
+    background-color: #FFF;
+
+}
+
 body {
     background-color: #FFF;
     height: 100%;
@@ -8,6 +12,7 @@ body {
 
 #navbarNav {
     float: right;
+    background-color: #FFF;
     height: max-content;
     width: max-content;
 }
@@ -22,11 +27,13 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #FE7D6A;
+    background-color: white;
+    /* background-color: #FE7D6A; */
 }
 
 body::-webkit-scrollbar-thumb:hover {
-    background-color: #f86751;
+    /* background-color: #f86751; */
+    background-color: #FFF;
 }
 
 
@@ -46,6 +53,7 @@ body {
     flex-direction: column !important;
     align-items: center !important;
     font-family: 'Lato', sans-serif;
+    background-color: #FFF;
 }
 
 .navbrandimg {
@@ -76,7 +84,8 @@ body {
 
 .dropdown-item:hover {
     text-shadow: 2px 2px 5px #d7722c;
-    background-color: peachpuff;
+    
+    /* background-color: peachpuff; */
 }
 
 
