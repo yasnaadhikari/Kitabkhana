@@ -13,8 +13,6 @@ body {
 #navbarNav {
     float: right;
     background-color: #FFF;
-    height: max-content;
-    width: max-content;
 }
 
 
@@ -41,7 +39,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 body {
     overflow-y: scroll;
-    scrollbar-color: #ec9108 rgb(255, 255, 255);
+    scrollbar-color: white;
+    /* scrollbar-color: #ec9108 rgb(255, 255, 255); */
     scrollbar-width: thin;
 }
 
@@ -83,7 +82,7 @@ body {
 }
 
 .dropdown-item:hover {
-    text-shadow: 2px 2px 5px #d7722c;
+    text-shadow: 2px 2px 5px #FFF;
     
     /* background-color: peachpuff; */
 }
