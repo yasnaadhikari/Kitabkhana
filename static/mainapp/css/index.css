@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  background-color: #e2970c79;
+  background-color: #fcfafa;
   z-index: 99;
 }
 
@@ -137,7 +137,7 @@
 
 .genre-container,
 .top-books {
-  background-color: #153450;
+  background-color: #bb93a4;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -169,7 +169,7 @@ ol.carousel-indicators li {
   height: 7px;
   border: none;
   border-radius: 10px;
-  background-color: #dc3545;
+  background-color: #d80f2a;
   opacity: 0.6;
   margin: 0 5px;
 }
@@ -197,7 +197,7 @@ ol.carousel-indicators li.active {
   height: 50px;
   top: 50%;
   border-radius: 50%;
-  background-color: #dc3545;
+  background-color: #1abba0b9;
 }
 
 @media screen and (min-width: 992px) {
@@ -239,7 +239,7 @@ ol.carousel-indicators li.active {
 .card-title {
   font-family: "Sora", sans-serif;
   font-size: x-large;
-  color: #d7722c;
+  color: #6f42c2d3;
 }
 
 .card-img:hover {
