@@ -332,24 +332,15 @@
                         {% if user.is_authenticated %}
                         <div class='rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)"
                             onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
-<<<<<<< HEAD
-                            <div id='button-text-{{ book.book_id }}'>Rate <i class="fa fa-star" style="color:goldenrod"></i>
-=======
                             <div id='button-text-{{ book.book_id }}'>Rate <i class="fa fa-star"
                                     style="color:yellow"></i>
->>>>>>> 84c9ed36bfef00eb3c0cb6b84f4d51a7a3ae7b12
                                 This Book</a>
                             </div>
                             <div class='rateYo' id='rate-{{ book.book_id }}'></div>
                         </div>
                         {% else %}
-<<<<<<< HEAD
-                        <div class='rating-block btn' onclick="location.href='{% url 'account_signup' %}'">
-                            <div id='button-text'>Rate <i class="fa fa-star" style="color:goldenrod"></i> This Book
-=======
                         <div class='rating-block btn' onclick="location.href=''">
                             <div id='button-text'>Rate <i class="fa fa-star" style="color:yellow"></i> This Book
->>>>>>> 84c9ed36bfef00eb3c0cb6b84f4d51a7a3ae7b12
                                 </a>
                             </div>
                         </div>

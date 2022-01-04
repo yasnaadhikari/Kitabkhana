@@ -136,3 +136,9 @@ def SaveList(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'mainapp/saved_book.html', {'page_obj': page_obj, 'num': total_books})
+
+@ensure_csrf_cookie
+def reviews(request):
+    N = 152
+    sample = get_top_n().sample(N).to_dict('records')
+    return render(request, 'mainapp/reviews.html', {'book': sample})

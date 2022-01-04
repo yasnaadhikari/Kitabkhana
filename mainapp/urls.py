@@ -6,7 +6,8 @@ urlpatterns = [
     path('explore_books/', views.explore_books, name='explore_books'),
     path('book_recommendations/', views.book_recommendations, name='book_recommendations'),
     path('library/rated_books', views.read_books, name='read_books'),
-    path('library/saved_books', views.SaveList, name='to_read')
+    path('library/saved_books', views.SaveList, name='to_read'),
+    path('reviews', views.reviews, name='reviews')
 
 ]
 
