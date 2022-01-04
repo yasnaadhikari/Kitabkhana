@@ -22,7 +22,7 @@
                 <h5 class=" card-title">{{book.original_title}}</h5>
                 <p class=" card-text"><i>by {{book.authors}}</i></p>
                 <div class=" rating-block" id="rating-block-{{ book.book_id }}" onmouseover="rateStart(this)" onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
-                    <div id="button-text-{{ book.book_id }}">Rate <i class="fa fa-heart" style="color:red"></i> This Book
+                    <div id="button-text-{{ book.book_id }}">Rate <i class="fa fa-star" style="color:yellow"></i> This Book
                     </div>
                     <div class='rateYo' id='rate-{{ book.book_id }}'></div>
                 </div>

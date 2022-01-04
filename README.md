@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+
+**Kitabkhana** is a Book Recommendation System built for all you Book Lovers📖.
+Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩.<br>
+See [Demo](#user-content-demo-) 🎥
+=======
 Kitabkhana is a Book Recommendation System built for all you Book Lovers📖.
 Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩
+>>>>>>> 84c9ed36bfef00eb3c0cb6b84f4d51a7a3ae7b12
 
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://kitabe-app.herokuapp.com/)
 [![Build Status](https://travis-ci.com/Praful932/Kitabe.svg?token=XKcoN48yFyATXWUZ6d8j&branch=master)](https://travis-ci.com/Praful932/Kitabe) 

@@ -1,4 +1,7 @@
-html,
+html {
+  background-color: #fff;
+}
+
 body {
   background-color: #fff;
   height: 100%;
@@ -8,8 +11,7 @@ body {
 
 #navbarNav {
   float: right;
-  height: max-content;
-  width: max-content;
+  background-color: #fff;
 }
 
 /* Custom Scrollbar */
@@ -32,7 +34,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 body {
   overflow-y: scroll;
-  scrollbar-color: #ec9108 rgb(255, 255, 255);
+  scrollbar-color: white;
+  /* scrollbar-color: #ec9108 rgb(255, 255, 255); */
   scrollbar-width: thin;
 }
 
@@ -43,6 +46,7 @@ body {
   flex-direction: column !important;
   align-items: center !important;
   font-family: "Lato", sans-serif;
+  background-color: #fff;
 }
 
 .navbrandimg {
@@ -71,8 +75,9 @@ body {
 }
 
 .dropdown-item:hover {
-  text-shadow: 2px 2px 5px #d7722c;
-  background-color: peachpuff;
+  text-shadow: 2px 2px 5px #fff;
+
+  /* background-color: peachpuff; */
 }
 
 /* -------------------------search bar-----------------------  */
