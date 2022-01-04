@@ -130,3 +130,7 @@ Kitabkhana
 username: yasnadon
 email: yasna@gmail.com
 password: yasnadon
+
+username: dipeshdon
+email: dipesh@gmail.com
+password: dipesh123
