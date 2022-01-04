@@ -67,8 +67,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="">
+                                    <i class="nav-icon-s fa fa-shopping-cart fa-2x" aria-hidden="true"></i><br>Cart
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'explore_books' %}">
-                                    <i class="nav-icon-s fa fa-globe fa-2x" aria-hidden="true"></i><br>Book Inventory
+                                    <i class="nav-icon-s fa fa-book fa-2x" aria-hidden="true"></i><br>Book Inventory
                                 </a>
                             </li>
                             {% if user.is_authenticated %}
