@@ -9,7 +9,7 @@
 {% block main %}
 
 <!-- preloader -->
-<div class="preloader-container">
+<!-- <div class="preloader-container">
     <div class="spinner">
         <div class="rec">
             <div class="rect1"><img src="{% static 'mainapp/png/book.svg' %}" alt="book"></div>
@@ -20,7 +20,7 @@
         </div>
         <div class="stand"> </div>
     </div>
-</div>
+</div> -->
 
 <!---------------------------------------------------------------   adding Carousel (sliding banner) -------------------------------------------------------------------->
 <!-- carousel 1 -->
@@ -329,6 +329,7 @@
                         <br><br>
                         <a href="javascript:" onclick='bookDetails(this)' class="btn more-details"
                             data-book-id="{{ book.book_id }}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+
                         {% if user.is_authenticated %}
                         <div class='rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)"
                             onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">

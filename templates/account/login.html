@@ -9,14 +9,14 @@ Login
 {% endblock title %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'mainapp/css/login.css' %}">
+<link rel="stylesheet" type='text/css' href="{% static 'mainapp/css/login.css' %}">
 {% endblock head %}
 
 {% block main %}
 <div class="container account-block ">
     <div class="h-100 row">
         <div class="h-100 col-12 col-sm-12 col-xl-8 signin-block">
-            <h3 class="welcome">Welcome Back to Kitabkhana!</h3>
+            <h3 class="welcom">Welcome Back to Kitabkhana!</h3>
             <form method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
                 <div class="form-group">
@@ -40,8 +40,9 @@ Login
                     <br><strong>{{ error|escape }}</strong><br>
                     {% endfor %}
                     {% endif %}
-                    <button class="loginbutton primaryAction" type="submit">{% trans "Login" %}</button> <a
-                        href="{% url 'account_signup' %}"><button class="googlebutton"> Sign Up </button></a>
+                    <button class="loginbutton primaryAction" type="submit">{% trans "Login" %}</button>
+                    <!-- <a
+                        href="{% url 'account_signup' %}"><button class="googlebutton"> Sign Up </button></a> -->
                     <br>
                 </div>
             </form>
