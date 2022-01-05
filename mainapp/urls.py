@@ -8,7 +8,9 @@ urlpatterns = [
     path('library/rated_books', views.read_books, name='read_books'),
     path('library/saved_books', views.SaveList, name='to_read'),
     path('reviews', views.reviews, name='reviews'),
-    path('cart', views.cart, name='cart')
+    path('cart', views.cart, name='cart'),
+    path('', views.reviews, name="Reviews"),
+    path("discussion/<int:myid>/", views.discussion, name="Discussions")
 
 ]
 
