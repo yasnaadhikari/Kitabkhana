@@ -142,3 +142,9 @@ def reviews(request):
     N = 152
     sample = get_top_n().sample(N).to_dict('records')
     return render(request, 'mainapp/reviews.html', {'book': sample})
+
+@ensure_csrf_cookie
+def cart(request):
+    N = 152
+    sample = get_top_n().sample(N).to_dict('records')
+    return render(request, 'mainapp/reviews.html', {'book': sample})
