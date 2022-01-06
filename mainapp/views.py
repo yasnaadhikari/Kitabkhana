@@ -147,7 +147,7 @@ def reviews(request):
 def cart(request):
     N = 152
     sample = get_top_n().sample(N).to_dict('records')
-    return render(request, 'mainapp/reviews.html', {'book': sample})
+    return render(request, 'mainapp/cart.html', {'book': sample})
 
 
 from .models import Post
