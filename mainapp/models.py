@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from mainapp.helpers import get_book_title
+from django.utils.timezone import now
 
 import BookRecSystem.settings as settings
 import pandas as pd
@@ -27,23 +28,19 @@ class SaveForLater(models.Model):
         return self.user.username.capitalize() + '- ' + get_book_title(self.bookid)
 
 
-#for the Reviews Section; Create your models here.
-class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)    
-    image = models.ImageField(upload_to="images",default="default/user.png")
-    
+# for the Reviews Section
     
 class Post(models.Model):
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     post_id = models.AutoField
     post_content = models.CharField(max_length=5000)
     timestamp= models.DateTimeField(default=now)
-    image = models.ImageField(upload_to="images",default="")
+    # image = models.ImageField(upload_to="images",default="")
     
-class Replie(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    reply_id = models.AutoField
-    reply_content = models.CharField(max_length=5000) 
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, default='')
-    timestamp= models.DateTimeField(default=now)
-    image = models.ImageField(upload_to="images",default="")
+# class Replie(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+#     reply_id = models.AutoField
+#     reply_content = models.CharField(max_length=5000) 
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE, default='')
+#     timestamp= models.DateTimeField(default=now)
+#     image = models.ImageField(upload_to="images",default="")
