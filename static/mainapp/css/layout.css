@@ -35,7 +35,6 @@ body::-webkit-scrollbar-thumb:hover {
 body {
   overflow-y: scroll;
   scrollbar-color: white;
-  /* scrollbar-color: #ec9108 rgb(255, 255, 255); */
   scrollbar-width: thin;
 }
 
@@ -50,7 +49,7 @@ body {
 }
 
 .navbrandimg {
-  width: 94px;
+  width: 95px;
 }
 
 .navbar-toggler {
