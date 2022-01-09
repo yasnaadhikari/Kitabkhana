@@ -68,9 +68,8 @@ We used the book embedding as a representation of the books to infer underlying 
 > 🛠 Code for every step can be found in the [Notebooks and Files](#notebooks-and-files) Section.
 
 ### Final Result 😁
-The [Image](https://coggle.it/diagram/X6TOUxlMvSl8FBM4/t/dataset/7083ac4f2de39517a4d97cd9d3d211c11af6e65f9a0034c46d613ff0f9cd5) says it All.
-
-![coggle](https://user-images.githubusercontent.com/45713796/98331008-ae95e200-2021-11eb-915b-892854f88a6e.png)
+The Image says it All.
+![KitabKhana flowchart](https://user-images.githubusercontent.com/35715537/148672915-f3abf4c7-fc31-49a5-92f9-71156307afa4.png)
 
 
 ### Project Structure 💁‍♀️
@@ -110,15 +109,10 @@ Kitabkhana
 
 ### To Do 🎯
 - [X] Display Popular Books Among Users
-- [X] Add AJAX View Tests
-- [X] Add Model Tests
+- [X] Checkout section
+- [X] Add to cart
 - [X] Use a Better Approach than Count Vectorizer
 
-### Notebooks and Files 📓
-- [All Dataset & Model Files](https://drive.google.com/drive/folders/1SvuCvfiSxwuF21EvmKyhSkuwjgK7KU6S?usp=sharing)
-- [Cleaning and Embedding Notebook](https://drive.google.com/file/d/1wlKiSvYQEXG7xtru5jDQWQwxffaVd9Ap/view?usp=sharing)
-- [Fix Missing Images Notebook](https://drive.google.com/file/d/1S0pd5t9oU9a63EdmlXmxhNWGc228W3ke/view?usp=sharing)
-- [Genre Wise & Tfidf Vectorizer Notebook](https://drive.google.com/file/d/1LRr4Nm2I2HRJUTXbRea3sK5A1Bvp_lav/view?usp=sharing)
 
 ### References 😇
 
