@@ -37,10 +37,10 @@ class Post(models.Model):
     timestamp= models.DateTimeField(default=now)
     # image = models.ImageField(upload_to="images",default="")
     
-# class Replie(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-#     reply_id = models.AutoField
-#     reply_content = models.CharField(max_length=5000) 
-#     post = models.ForeignKey(Post, on_delete=models.CASCADE, default='')
-#     timestamp= models.DateTimeField(default=now)
+class Replie(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    reply_id = models.AutoField
+    reply_content = models.CharField(max_length=5000) 
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, default='')
+    timestamp= models.DateTimeField(default=now)
 #     image = models.ImageField(upload_to="images",default="")

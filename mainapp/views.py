@@ -150,7 +150,7 @@ def cart(request):
     return render(request, 'mainapp/cart.html', {'book': sample})
 
 
-from .models import Post
+from .models import Post, Replie
 # , Replie, Profile
 
 
@@ -164,22 +164,23 @@ def reviews(request):
         # , image=image)
         post.save()
         alert = True
-        return render(request, 'reviews.html', {'alert':alert})
+        return render(request, 'mainapp/reviews.html', {'alert':alert})
     posts = Post.objects.filter().order_by('-timestamp')
     return render(request, 'mainapp/reviews.html', {'posts':posts})
 
-# def discussion(request, myid):
-#     post = Post.objects.filter(id=myid).first()
-#     replies = Replie.objects.filter(post=post)
-#     if request.method=="POST":
-#         user = request.user
-#         image = request.user.profile.image
-#         desc = request.POST.get('desc','')
-#         post_id =request.POST.get('post_id','')
-#         reply = Replie(user = user, reply_content = desc, post=post, image=image)
-#         reply.save()
-#         alert = True
-#         return render(request, "discussion.html", {'alert':alert})
-#     return render(request, "discussion.html", {'post':post, 'replies':replies})
+def discussion(request, myid):
+    post = Post.objects.filter(id=myid).first()
+    replies = Replie.objects.filter(post=post)
+    if request.method=="POST":
+        user = request.user
+        # image = request.user.profile.image
+        desc = request.POST.get('desc','')
+        post_id =request.POST.get('post_id','')
+        reply = Replie(user = user, reply_content = desc, post=post)
+        # , image=image)
+        reply.save()
+        alert = True
+        return render(request, 'mainapp/discussion.html', {'alert':alert})
+    return render(request, 'mainapp/discussion.html', {'post':post, 'replies':replies})
 
 

@@ -1,6 +1,6 @@
-<!-- {% extends 'reviews' %}
+{% extends 'mainapp/reviews.html' %}
 
-{% block title %} Solutions {% endblock %}
+{% block title %} Replies {% endblock %}
 
 {% block css %}
 {% endblock %}
@@ -11,9 +11,10 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-header">
-                    <div class="media flex-wrap w-100 align-items-center"> <img src="/media/{{post.image}}"
-                            class="d-block ui-w-40 rounded-circle" alt="" width="40px" height="40px">
-                        <div class="media-body ml-3" style="text-transform: uppercase;"> <a data-abc="true">{{post.user1}}</a>
+                    <div class="media flex-wrap w-100 align-items-center"> <i class="fa fa-user" aria-hidden="true"></i>
+                      <!-- <img src="/media/{{post.image}}"
+                            class="d-block ui-w-40 rounded-circle" alt="" width="40px" height="40px"> -->
+                        <div class="media-body ml-3" style="text-transform: uppercase;"> <a data-abc="true">{{post.user}}</a>
                         </div>
                         <div class="text-muted small ml-3">
                             <div>Date and Time Of Post :</div>
@@ -37,16 +38,17 @@
 <br>
 <div class="container">
 <div class="media">
-    <img class="mr-3 rounded-circle" src="/media/{{reply.image}}" alt="." width="30px" height="30px">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <!-- <img class="mr-3 rounded-circle" src="/media/{{reply.image}}" alt="." width="30px" height="30px"> -->
     <div class="media-body">
       <h4 class="mt-0">{{reply.user}}	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;  <span><small style="font-size: 13px;">({{reply.timestamp}})</small></span></h4>   
       <h5>{{reply.reply_content}}</h5>
     </div>
   </div>
 </div>
-{% endfor %} -->
+{% endfor %}
 <!-- Modal -->
-<!-- <div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -59,7 +61,7 @@
         <div class="modal-body">
           <form action="/discussion/{{post.id}}/" method="POST"> {% csrf_token %}
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Post Your Solution Here</label>
+              <label for="exampleFormControlTextarea1">Post Your Reply Here</label>
               <input type="hidden" name="post_id" value="{{post.id}}">
               <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
             </div>
@@ -69,13 +71,13 @@
           {% endif %}
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Post Solution</button>
+          <button type="submit" class="btn btn-primary">Post Reply</button>
         </div>
       </div>
     </div>
   </div>
 {% endblock %}
-{% block js %}
+<!-- {% block js %}
 <script>
  {% if alert %}
 alert('Your Reply has been posted successfully!!');
