@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -151,7 +152,6 @@ def cart(request):
 
 
 from .models import Post, Replie
-# , Replie, Profile
 
 
 def reviews(request):
@@ -182,5 +182,3 @@ def discussion(request, myid):
         alert = True
         return render(request, 'mainapp/discussion.html', {'alert':alert})
     return render(request, 'mainapp/discussion.html', {'post':post, 'replies':replies})
-
-

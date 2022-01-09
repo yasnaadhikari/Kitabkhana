@@ -27,7 +27,7 @@ SECRET_KEY = 'abc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kitabe-app.herokuapp.com', '127.0.0.1', 'localhost:8000']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost:8000']
 
 
 # Application definition
