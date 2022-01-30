@@ -1,39 +1,24 @@
-<<<<<<< HEAD
-
-**Kitabkhana** is a Book Recommendation System built for all you Book Lovers📖.
-Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩.<br>
-See [Demo](#user-content-demo-) 🎥
-=======
-Kitabkhana is a Book Recommendation System built for all you Book Lovers📖.
-Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩
->>>>>>> 84c9ed36bfef00eb3c0cb6b84f4d51a7a3ae7b12
-
-[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://kitabe-app.herokuapp.com/)
-[![Build Status](https://travis-ci.com/Praful932/Kitabe.svg?token=XKcoN48yFyATXWUZ6d8j&branch=master)](https://travis-ci.com/Praful932/Kitabe) 
-
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FPraful932%2FKitabe&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Praful932/Kitabe/graphs/commit-activity)
-![GitHub stars](https://img.shields.io/github/stars/Praful932/Kitabe?style=social) ![GitHub forks](https://img.shields.io/github/forks/Praful932/Kitabe?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/Praful932/Kitabe?style=social)
-
+<head>
+**Kitabkhana** is a Book Recommendation System built for all Book Lovers.
+Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩.</head>
 
 # Contents
-- [Approach](#objective-) 🧐
-    - [Objective](#objective-) ✍
-    - [Dataset](#dataset-) 🧾
-    - [PreProcessing](#preprocessing-) 🛠
-    - [Model Exploration](#model-exploration-) 🤯
-    - [Final Result](#final-result-) 😁
-- [Project Structure](#project-structure-%EF%B8%8F) 💁‍♀️
-- [To Do](#to-do-) 🎯
-- [Notebooks and Files](#notebooks-and-files-) 📓
-- [References](#references-) 😇
+- [Approach](#objective-)
+    - [Objective](#objective-)
+    - [Dataset](#dataset-)
+    - [PreProcessing](#preprocessing-)
+    - [Model Exploration](#model-exploration-)
+    - [Final Result](#final-result-)
+- [Project Structure](#project-structure-%EF%B8%8F)
+- [To Do](#to-do-)
+- [Notebooks and Files](#notebooks-and-files-)
+- [References](#references-)
 
 ### Objective ✍
-Our objective is to build an application for all Book Lovers ♥ like us out there where all you have to 
-do is rate some of your favorite books and the application will do it's **voodoo magic** 🧙‍♂️ and give you some more books that you may **love😍 to read**.
+Our objective is to build an application for all Book Lovers like us out there where all you have to do is rate some of your favorite books and the application will give you some more books that you may love to read.
 
 ### Dataset 🧾
-The Dataset that we used for this task is the [goodbooks-10k](https://github.com/zygmuntz/goodbooks-10k) dataset. It consists of 10k books with a total of 6 million ratings. That's huge right! 😮. There are some more huge datasets such as [Book-Crossings](http://www2.informatik.uni-freiburg.de/~cziegler/BX/) but they are kinda old 😬.
+The Dataset that we used for this task is the [goodbooks-10k](https://github.com/zygmuntz/goodbooks-10k) dataset. It consists of 10k books with a total of 6 million ratings. There are some more huge datasets such as [Book-Crossings](http://www2.informatik.uni-freiburg.de/~cziegler/BX/) but they are kinda old.
 
 **Dataset Structure** 
 ```
