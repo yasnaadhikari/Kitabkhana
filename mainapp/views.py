@@ -164,7 +164,7 @@ def reviews(request):
         # , image=image)
         post.save()
         alert = True
-        return render(request, 'mainapp/reviews.html', {'alert':alert})
+        # return render(request, 'mainapp/reviews.html', {'alert':alert} )
     posts = Post.objects.filter().order_by('-timestamp')
     return render(request, 'mainapp/reviews.html', {'posts':posts})
 
@@ -180,5 +180,5 @@ def discussion(request, myid):
         # , image=image)
         reply.save()
         alert = True
-        return render(request, 'mainapp/discussion.html', {'alert':alert})
+        # return render(request, 'mainapp/discussion.html', {'alert':alert})
     return render(request, 'mainapp/discussion.html', {'post':post, 'replies':replies})
