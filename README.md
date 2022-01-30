@@ -1,8 +1,6 @@
-<head>
-**Kitabkhana** is a Book Recommendation System built for all Book Lovers.
-Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩.</head>
+## Kitabkhana is a Book Recommendation System built for all Book Lovers. Simply Rate ⭐ some books and get immediate recommendations tailored for you 🤩.
 
-# Contents
+### Contents
 - [Approach](#objective-)
     - [Objective](#objective-)
     - [Dataset](#dataset-)
