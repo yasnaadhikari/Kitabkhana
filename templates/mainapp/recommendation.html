@@ -1,7 +1,7 @@
 {% extends "mainapp/layout.html" %}
 {% load static %}
 
-{% block title  %}
+{% block title %}
 Personalized Read
 {% endblock title %}
 
@@ -25,8 +25,8 @@ Personalized Read
             <div class="book-title">{{book.original_title}}</div>
             <div class="book-author">by {{book.authors}}</div>
             <span class="book-voters">{{book.average_rating}} rating &#11088;</span>
-            <a href="javascript:;" onclick='bookDetails(this)' class="btn more-details"
-                data-book-id="{{ book.book_id }}">More Details</a>
+            <a href="javascript:" onclick='' class="btn more-details" data-book-id="{{ book.book_id }}"><i
+                    class="fa fa-shopping-cart"></i> Add to Cart</a>
             {% if user.is_authenticated %}
             <div class='rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)"
                 onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
@@ -43,7 +43,7 @@ Personalized Read
             {% endif %}
         </div>
     </div>
-    {% if forloop.counter|divisibleby:"3"  %}
+    {% if forloop.counter|divisibleby:"3" %}
 </div>
 <div class="card-deck  pb-4  mb-5" style="margin: 0 auto;">
     {% endif %}

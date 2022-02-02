@@ -1,9 +1,9 @@
 {% extends "mainapp/layout.html" %}
 {% load static %}
 
-{% block title  %}
+{% block title %}
 Genre
-{% endblock title %} 
+{% endblock title %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'mainapp/css/genre.css' %}">
@@ -18,7 +18,8 @@ Genre
 <div class="card-deck ">
     {% for book in genre_topbook %}
 
-    <div class="card col-sm-12 col-lg-3 " style="width: 300px;">
+    <div class="card col-sm-12 col-lg-3 " style="width: 300px; " data-book-id="{{ book.book_id }}"
+        onclick='bookDetails(this)'>
         <div class="row no-gutters">
             <img class="card-img  mt-4 " src="{{book.image_url}}" alt="book Card">
             <div class="card-body text-center">
@@ -26,11 +27,11 @@ Genre
                 <p class="card-text"><i>by {{book.authors|truncatechars:25}}</i></p>
             </div>
         </div><br>
-        <a href="javascript:;" onclick='bookDetails(this)' class="btn more-details"
-            data-book-id="{{ book.book_id }}">More Details</a>
+        <a href="" class="btn more-details" "><i
+                class=" fa fa-shopping-cart"></i> Add to Cart</a>
         {% if user.is_authenticated %}
-        <div class='rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)" onclick='rateBook(this)' onmouseout='finishRate(this)'
-            data-book-id="{{ book.book_id }}">
+        <div class=' rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)"
+            onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
             <div id='button-text-{{ book.book_id }}'>Rate <i class="fa fa-star" style="color:yellow"></i> This Book</a>
             </div>
             <div class='rateYo' id='rate-{{ book.book_id }}'></div>
@@ -45,7 +46,7 @@ Genre
 
 
 
-    {% if forloop.counter|divisibleby:"4"  %}
+    {% if forloop.counter|divisibleby:"4" %}
 </div>
 <div class="card-deck  ">
     {% endif %}
