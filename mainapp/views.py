@@ -1,3 +1,4 @@
+from .models import Post, Replie
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -57,9 +58,11 @@ def book_recommendations(request):
             2. Shuffle by Top Ratings(For Randomness each time)
             3. Recommend according to Top Rated Book
     '''
-    user_ratings = list(UserRating.objects.filter(user=request.user).order_by('-bookrating'))
+    user_ratings = list(UserRating.objects.filter(
+        user=request.user).order_by('-bookrating'))
     random.shuffle(user_ratings)
-    best_user_ratings = sorted(user_ratings, key=operator.attrgetter('bookrating'), reverse=True)
+    best_user_ratings = sorted(
+        user_ratings, key=operator.attrgetter('bookrating'), reverse=True)
 
     if len(best_user_ratings) < 4:
         messages.info(request, 'Please rate atleast 5 books')
@@ -73,11 +76,13 @@ def book_recommendations(request):
 
         # Shuffle again for randomness for second approach
         random.shuffle(user_ratings)
-        best_user_ratings = sorted(user_ratings, key=operator.attrgetter('bookrating'), reverse=True)
+        best_user_ratings = sorted(
+            user_ratings, key=operator.attrgetter('bookrating'), reverse=True)
         # Get Top 10 bookids based on embedding
         embedding_bookids = set(embedding_recommendations(best_user_ratings))
 
-        best_bookids = combine_ids(tfidf_bookids, embedding_bookids, already_rated_books)
+        best_bookids = combine_ids(
+            tfidf_bookids, embedding_bookids, already_rated_books)
         all_books_dict = get_book_dict(best_bookids)
     else:
         return redirect('index')
@@ -88,7 +93,8 @@ def book_recommendations(request):
 @ensure_csrf_cookie
 def read_books(request):
     """View To Render Library Page"""
-    user_ratings = list(UserRating.objects.filter(user=request.user).order_by('-bookrating'))
+    user_ratings = list(UserRating.objects.filter(
+        user=request.user).order_by('-bookrating'))
     if len(user_ratings) == 0:
         messages.info(request, 'Please rate some books')
         return redirect('index')
@@ -119,13 +125,16 @@ def handler500(request, *args, **argv):
 
 def SaveList(request):
     """View to render Saved books page"""
-    user_ratings = list(UserRating.objects.filter(user=request.user).order_by('-bookrating'))
+    user_ratings = list(UserRating.objects.filter(
+        user=request.user).order_by('-bookrating'))
     rated_books = set(get_rated_bookids(user_ratings))
-    book = set(SaveForLater.objects.filter(user=request.user).values_list('bookid', flat=True))
+    book = set(SaveForLater.objects.filter(
+        user=request.user).values_list('bookid', flat=True))
     book_id = list(book)
     for i in range(len(book_id)):
         if book_id[i] in rated_books:
-            saved_book = SaveForLater.objects.filter(user=request.user, bookid=book_id[i])
+            saved_book = SaveForLater.objects.filter(
+                user=request.user, bookid=book_id[i])
             saved_book.delete()
             book_id.remove(book_id[i])
     if len(book_id) == 0:
@@ -138,11 +147,13 @@ def SaveList(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'mainapp/saved_book.html', {'page_obj': page_obj, 'num': total_books})
 
+
 @ensure_csrf_cookie
 def reviews(request):
     N = 152
     sample = get_top_n().sample(N).to_dict('records')
     return render(request, 'mainapp/reviews.html', {'book': sample})
+
 
 @ensure_csrf_cookie
 def cart(request):
@@ -151,34 +162,39 @@ def cart(request):
     return render(request, 'mainapp/cart.html', {'book': sample})
 
 
-from .models import Post, Replie
+@ensure_csrf_cookie
+def checkout(request):
+    N = 152
+    sample = get_top_n().sample(N).to_dict('records')
+    return render(request, 'mainapp/checkout.html', {'book': sample})
 
 
 def reviews(request):
     # profile = Profile.objects.all()
-    if request.method=="POST":   
+    if request.method == "POST":
         user = request.user
         # image = request.user.profile.image
-        content = request.POST.get('content','')
+        content = request.POST.get('content', '')
         post = Post(user=user, post_content=content)
         # , image=image)
         post.save()
         alert = True
         # return render(request, 'mainapp/reviews.html', {'alert':alert} )
     posts = Post.objects.filter().order_by('-timestamp')
-    return render(request, 'mainapp/reviews.html', {'posts':posts})
+    return render(request, 'mainapp/reviews.html', {'posts': posts})
+
 
 def discussion(request, myid):
     post = Post.objects.filter(id=myid).first()
     replies = Replie.objects.filter(post=post)
-    if request.method=="POST":
+    if request.method == "POST":
         user = request.user
         # image = request.user.profile.image
-        desc = request.POST.get('desc','')
-        post_id =request.POST.get('post_id','')
-        reply = Replie(user = user, reply_content = desc, post=post)
+        desc = request.POST.get('desc', '')
+        post_id = request.POST.get('post_id', '')
+        reply = Replie(user=user, reply_content=desc, post=post)
         # , image=image)
         reply.save()
         alert = True
         # return render(request, 'mainapp/discussion.html', {'alert':alert})
-    return render(request, 'mainapp/discussion.html', {'post':post, 'replies':replies})
+    return render(request, 'mainapp/discussion.html', {'post': post, 'replies': replies})
