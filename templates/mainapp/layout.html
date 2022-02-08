@@ -43,8 +43,8 @@
         <a name='top'>
             <div id="topheader">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="/"><img class="navbrandimg" src="{% static 'mainapp/png/Kitabkhana.png' %}"
-                            height="90" width="100"></a>
+                    <a class="navbar-brand" href="/"><img class="navbrandimg"
+                            src="{% static 'mainapp/png/Kitabkhana.png' %}" height="90" width="100"></a>
                     <!-- Search Bar -->
                     <div class="searchbar" id="searchdropdown">
                         <input type="text" id="bookName" onkeyup="myFunction()"
@@ -94,7 +94,8 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'reviews' %}">
-                                    <i class="nav-icon-s fa fa-comments fa-2x" aria-hidden="true"></i><br> Reviews Discussion
+                                    <i class="nav-icon-s fa fa-comments fa-2x" aria-hidden="true"></i><br> Reviews
+                                    Discussion
                                 </a>
                             </li>
                             </li>
@@ -156,6 +157,11 @@
                             <strong>Authors:</strong>
                             <p id="bookauthors">
                             </p>
+                            <div class="row">
+
+                                <strong> Rs. </strong>
+                                <p id="bookPrice"></p>
+                            </div>
 
                             <div id="bookrating"></div>
                         </div>
@@ -321,12 +327,36 @@
 
         });
 
+        //on add to cart clicked
+        function addCart(obj) {
+            var bookid = obj.getAttribute('data-book-id');
+            var bookprice = obj.getAttribute('data-book-price');
+            console.log('#book id-' + bookid);
+            console.log('#book-price-' + bookprice);
+
+            $.ajax({
+                data: {
+                    'bookid': bookid,
+                    'csrfmiddlewaretoken': Cookies.get('csrftoken')
+                },
+                dataType: 'json',
+                url: "{% url 'add_cart' %}",
+                type: 'POST',
+                success: function (response) {
+
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            })
+        }
         // when hover over rate
         function rateStart(obj) {
             var bookid = obj.getAttribute('data-book-id');
             $('#button-text-' + bookid).css('display', 'none');
             $('#rate-' + bookid).css('display', 'block');
         }
+
 
         // onclick rate
         function rateBook(obj) {
@@ -381,11 +411,13 @@
                     $('#loading').show();
                     var summary = getsummary(bookid);
                     var bookName = book_details.original_title;
+                    var bookPrice = book_details.book_price;
                     var authors = book_details.authors;
                     var imageurl = book_details.image_url;
                     var averagerating = book_details.average_rating;
                     $('#booktitle').text(bookName);
                     $('#bookauthors').text(authors);
+                    $('#bookPrice').text(bookPrice);
                     $('#bookimage').attr('src', imageurl);
                     $("#bookrating").rateYo({
                         rating: averagerating,

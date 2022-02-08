@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from mainapp.helpers import is_bookid_invalid, is_rating_invalid, get_rated_bookids
 import BookRecSystem.settings as settings
-from mainapp.models import UserRating, SaveForLater
+from mainapp.models import UserRating, SaveForLater, AddToCart
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
@@ -13,8 +13,10 @@ import requests
     Production File Path :  staticfiles_storage.url(file)
     Developement File Path : settings.STATICFILES_DIRS[0] + 'app/.../file'
 '''
-book_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/dataset/books.csv')
-user_ratings_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/csv/userratings.csv')
+book_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/dataset/books.csv')
+user_ratings_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/csv/userratings.csv')
 
 
 def search(request):
@@ -51,7 +53,8 @@ def book_summary(request):
         for spantag in div_container.find_all('span'):
             try:
                 # When text is too long, consider till last complete sentence
-                full_book_summary += spantag.text[:spantag.text.rindex('.')] + '. '
+                full_book_summary += spantag.text[:
+                                                  spantag.text.rindex('.')] + '. '
             except ValueError:
                 full_book_summary += spantag.text + ' '
             break
@@ -89,10 +92,12 @@ def user_rate_book(request):
             return JsonResponse({'success': False}, status=200)
 
         # Using Inbuilt Model
-        query = UserRating.objects.filter(user=request.user).filter(bookid=bookid)
+        query = UserRating.objects.filter(
+            user=request.user).filter(bookid=bookid)
         if not query:
             # Create Rating
-            UserRating.objects.create(user=request.user, bookid=bookid, bookrating=bookrating)
+            UserRating.objects.create(
+                user=request.user, bookid=bookid, bookrating=bookrating)
         else:
             # Update Rating
             rating_object = query[0]
@@ -114,6 +119,15 @@ def save_book(request):
         return JsonResponse({'success': True}, status=200)
 
 
+def add_cart(request):
+    """AJAX request when user saves book"""
+    if request.method == 'POST' and request.is_ajax():
+        bookid = request.POST.get('bookid', None)
+
+        AddToCart.objects.create(user=request.user, bookid=bookid)
+        return JsonResponse({'success': True}, status=200)
+
+
 def remove_saved_book(request):
     """AJAX request when user removes book"""
     if request.method == 'POST' and request.is_ajax():
@@ -121,6 +135,7 @@ def remove_saved_book(request):
         if is_bookid_invalid(bookid):
             return JsonResponse({'success': False}, status=200)
 
-        saved_book = SaveForLater.objects.filter(user=request.user, bookid=bookid)
+        saved_book = SaveForLater.objects.filter(
+            user=request.user, bookid=bookid)
         saved_book.delete()
         return JsonResponse({'success': True}, status=200)

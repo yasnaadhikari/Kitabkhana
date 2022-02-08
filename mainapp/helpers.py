@@ -9,17 +9,24 @@ from collections import Counter
 import BookRecSystem.settings as settings
 import mainapp.models
 
-book_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/dataset/books.csv')
+book_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/dataset/books.csv')
 
 # For Count Vectorizer
-cosine_sim_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/model_files/tf-idf/cosine_rating_sim.npz')
-book_indices_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/model_files/tf-idf/indices.pkl')
+cosine_sim_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/model_files/tf-idf/cosine_rating_sim.npz')
+book_indices_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/model_files/tf-idf/indices.pkl')
 
 # For Embedding
-book_id_map_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/book_raw_to_inner_id.pickle')
-book_raw_map_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/book_inner_id_to_raw.pickle')
-book_embed_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/book_embedding.npy')
-sim_books_path = os.path.join(settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/sim_books.pickle')
+book_id_map_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/book_raw_to_inner_id.pickle')
+book_raw_map_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/book_inner_id_to_raw.pickle')
+book_embed_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/book_embedding.npy')
+sim_books_path = os.path.join(
+    settings.STATICFILES_DIRS[0] + '/mainapp/model_files/surprise/sim_books.pickle')
 
 with open(book_id_map_path, 'rb') as handle:
     book_raw_to_inner_id = pickle.load(handle)
@@ -31,7 +38,8 @@ book_embedding = np.load(book_embed_path)
 with open(sim_books_path, 'rb') as handle:
     sim_books_dict = pickle.load(handle)
 
-cols = ['original_title', 'authors', 'average_rating', 'image_url', 'book_id']
+cols = ['original_title', 'authors', 'average_rating',
+        'image_url', 'book_id', 'book_price']
 
 df_book = pd.read_csv(book_path)
 total_books = df_book.shape[0]
@@ -172,7 +180,8 @@ def get_bookid(raw_id_list):
         List of bookids corresponding to raw ids.
 
     """
-    bookid_list = list(df_book[df_book.r_index.isin(raw_id_list)]['book_id'].values)
+    bookid_list = list(
+        df_book[df_book.r_index.isin(raw_id_list)]['book_id'].values)
     return bookid_list
 
 
@@ -268,7 +277,8 @@ def embedding_recommendations(sorted_user_ratings):
 
     for book in best_user_books:
         raw_id = get_raw_id(book)
-        top_sim_books = [book for book, similiarity in sim_books_dict[raw_id][:top_similiar]]
+        top_sim_books = [book for book,
+                         similiarity in sim_books_dict[raw_id][:top_similiar]]
         similar_bookid_list.extend(top_sim_books)
 
     similar_bookid_list = get_bookid(similar_bookid_list)
@@ -290,7 +300,8 @@ def get_book_dict(bookid_list):
         Dictionary of book details based on provided list of bookids.
 
     """
-    rec_books_dict = df_book[df_book['book_id'].isin(bookid_list)][cols].to_dict('records')
+    rec_books_dict = df_book[df_book['book_id'].isin(
+        bookid_list)][cols].to_dict('records')
     return rec_books_dict
 
 
@@ -336,10 +347,12 @@ def combine_ids(tfidf_bookids, embedding_bookids, already_rated, recommendations
 
         # n1 number of books from remaining tf_idf books
         best_bookids_tfidf = tfidf_bookids[3: (3*2)+n1]
-        best_bookids_tfidf = list(set(best_bookids_tfidf).difference(set(best_bookids)))[:n1]
+        best_bookids_tfidf = list(
+            set(best_bookids_tfidf).difference(set(best_bookids)))[:n1]
 
         # n2 number of books from list of top rated books of the most common genre among the books yet recommended
-        genre_recomm_bookids = most_common_genre_recommendations(best_bookids + already_rated + best_bookids_tfidf, n2)
+        genre_recomm_bookids = most_common_genre_recommendations(
+            best_bookids + already_rated + best_bookids_tfidf, n2)
 
         # number of recommendations = len(best_bookids) + n1 + n2 = len(best_bookids) + two_n
         best_bookids = best_bookids + best_bookids_tfidf + genre_recomm_bookids
@@ -364,14 +377,17 @@ def most_common_genre_recommendations(books, n):
     # Accumulation of all the genres listed from books
     genre_frequency = []
     for book in books:
-        genre_frequency.append(df_book[df_book['book_id'] == book]['genre'].values[0].split(", ")[0])
+        genre_frequency.append(
+            df_book[df_book['book_id'] == book]['genre'].values[0].split(", ")[0])
 
     most_common_genre = sorted(Counter(genre_frequency).most_common())[0][0]
 
     # Recommendations list, listing 2n bookids
-    genre_recommendations = genre_wise(most_common_genre).book_id.to_list()[:2*n]
+    genre_recommendations = genre_wise(
+        most_common_genre).book_id.to_list()[:2*n]
     # Removing common bookids from `books` and Slicing out the first n bookids
-    genre_recommendations = list(set(genre_recommendations).difference(books))[:n]
+    genre_recommendations = list(
+        set(genre_recommendations).difference(books))[:n]
 
     return genre_recommendations
 
@@ -419,9 +435,11 @@ def popular_among_users(N=15):
         Dictionary of book details.
 
     """
-    all_ratings = list(mainapp.models.UserRating.objects.all().order_by('-bookrating'))
+    all_ratings = list(
+        mainapp.models.UserRating.objects.all().order_by('-bookrating'))
     random.shuffle(all_ratings)
-    best_user_ratings = sorted(all_ratings, key=operator.attrgetter('bookrating'), reverse=True)
+    best_user_ratings = sorted(
+        all_ratings, key=operator.attrgetter('bookrating'), reverse=True)
 
     filtered_books = set()
     for i, rating in enumerate(best_user_ratings):
@@ -433,6 +451,7 @@ def popular_among_users(N=15):
     remaining_books_nos = N - len(filtered_books)
     if remaining_books_nos >= 0:
         rem_books = get_top_n(2*N)['book_id'].tolist()
-        filtered_books = list(filtered_books) + list((set(rem_books) - filtered_books))[:remaining_books_nos]
+        filtered_books = list(
+            filtered_books) + list((set(rem_books) - filtered_books))[:remaining_books_nos]
 
     return get_book_dict(filtered_books)

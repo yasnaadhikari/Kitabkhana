@@ -15,12 +15,15 @@ Library
     <div class="card  mb-4" style="max-width:600px;">
         <div class="row g-0">
             <div class="col-md-4 ">
-                <img class="img-fluid card-img" src="{{book.image_url}}" alt="book Card">
+                <img class="img-fluid card-img" src="{{book.image_url}}" alt="book Card"
+                    data-book-id="{{ book.book_id }}" onclick='bookDetails(this)'>
             </div>
             <div class="text-center col-md-8">
                 <div class="card-body">
                     <h5 class=" card-title">{{book.original_title}}</h5>
                     <p class=" card-text"><i>by {{book.authors}}</i></p>
+                    <p class=" card-text"><i>Rs. {{book.book_price}}</i></p>
+
                     <div class=" rating-block" id="rating-block-{{ book.book_id }}" onmouseover="rateStart(this)"
                         onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
                         <div id="button-text-{{ book.book_id }}">Rate <i class="fa fa-star" style="color:yellow"></i>

@@ -16,23 +16,24 @@ Explore
 <div class="large-screen" style="width:1200px; margin:0 auto;">
     <div class="centre, card-deck">
         {% for book in book %}
-        <div class="card col-sm-12 col-lg-3 " style="width: 300px;" data-book-id="{{ book.book_id }}"
-            onclick='bookDetails(this)'>
+        <div class="card col-sm-12 col-lg-3 " style="width: 300px;">
             <div class="row no-gutters">
-                <img class=" card-img  mt-4 " src="{{book.image_url}}" alt="book Card">
+                <img class=" card-img  mt-4 " src="{{book.image_url}}" alt="book Card" data-book-id="{{ book.book_id }}"
+                    onclick='bookDetails(this)'>
 
                 <div class="content text-center">
                     <div class="card-title">{{ book.original_title|truncatechars:30 }}</div>
                     <div class="card-text">by {{ book.authors|truncatechars:25}}</div>
+                    <div class=" card-text"><i>Rs. {{book.book_price}}</i></div>
                 </div>
             </div><br>
-            <a href="" class="btn more-details"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+            <a href='javascript:;' class="btn more-details" onclick='addCart(this)' data-book-id="{{ book.book_id }}"><i
+                    class="fa fa-shopping-cart"></i> Add to Cart</a>
             {% if user.is_authenticated %}
             <div class='rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)"
                 onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
                 <div id='button-text-{{ book.book_id }}'>Rate <i class="fa fa-star" style="color:yellow"></i> This
-                    Book
-                    </a>
+                    Book</a>
                 </div>
                 <div class='rateYo' id='rate-{{ book.book_id }}'></div>
             </div>

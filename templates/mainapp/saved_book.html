@@ -1,37 +1,41 @@
-{% extends "mainapp/layout.html" %} 
-{% load static %} 
-{% block title %} 
-Library 
-{% endblock title %} 
+{% extends "mainapp/layout.html" %}
+{% load static %}
+{% block title %}
+Library
+{% endblock title %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'mainapp/css/saved_book.css' %}">
-{% endblock head %} 
+{% endblock head %}
 {% block main %}
 
 <h1 id="title" class="genre-head text-center pt-3 pb-3">Saved for Later({{num}})</h1>
 <div class="card-deck pt-3">
-{% for book in page_obj %}
-<div id="book-{{book.book_id}}" class="obsu">
-    <div id="sekil">
-        <img src="{{book.image_url}}" alt="book Card" />
-    </div>
-    <div id="book_name">
-        {{book.original_title}}
-    </div>
-    <div id="author_name">
-        by {{book.authors}}
-    </div>
-    <div id="content">
-            <a href="javascript:;" onclick='bookDetails(this)' class=" btn more-details" data-book-id="{{ book.book_id }}">More Details</a>
-            <div class=" rating-block" id="rating-block-{{ book.book_id }}" onmouseover="rateStart(this)" onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
+    {% for book in page_obj %}
+    <div id="book-{{book.book_id}}" class="obsu">
+        <div id="sekil">
+            <img src="{{book.image_url}}" alt="book Card" onclick='bookDetails(this)'
+                data-book-id="{{ book.book_id }}" />
+        </div>
+        <div id="book_name">
+            {{book.original_title}}
+        </div>
+        <div id="author_name">
+            by {{book.authors}}
+        </div>
+        <div id="content">
+            <a href='javascript:;' class="btn more-details" onclick='addCart(this)' data-book-id="{{ book.book_id }}"><i
+                    class="fa fa-shopping-cart"></i> Add to Cart</a>
+            <div class=" rating-block" id="rating-block-{{ book.book_id }}" onmouseover="rateStart(this)"
+                onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
                 <div id="button-text-{{ book.book_id }}">Rate <i class="fa fa-star" style="color:yellow"></i> This Book
                 </div>
                 <div class='rateYo' id='rate-{{ book.book_id }}'></div>
             </div><br>
-            <a href="javascript:;" class="btn remove" onclick='removeBook(this)' data-book-id="{{ book.book_id }}">Remove from List</a>
+            <a href="javascript:;" class="btn remove" onclick='removeBook(this)'
+                data-book-id="{{ book.book_id }}">Remove from List</a>
+        </div>
     </div>
-</div>
-{% if forloop.counter|divisibleby:"2"  %}
+    {% if forloop.counter|divisibleby:"2" %}
 </div>
 <div class="card-deck pt-3">
     {% endif %}
@@ -40,7 +44,8 @@ Library
 <nav aria-label="...">
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
-        <li class="page-item"><a class="btn link" href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a></li>
+        <li class="page-item"><a class="btn link" href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
+        </li>
         {% endif %}
 
         <li class="page-item "><span class="btn des">
@@ -52,7 +57,7 @@ Library
 </nav>
 
 
-{% endblock main %} 
+{% endblock main %}
 {% block script %}
 <script>
     function removeBook(obj) {
@@ -66,14 +71,16 @@ Library
             dataType: 'json',
             url: '{%url "remove_saved_book" %}',
             type: 'POST',
-            success: function(response) {
+            success: function (response) {
                 $("#book-" + bookid).remove();
             },
-            error: function(response) {
+            error: function (response) {
                 console.log(response);
             }
         })
 
     }
+
+
 </script>
 {% endblock script %}
