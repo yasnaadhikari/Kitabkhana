@@ -1,4 +1,4 @@
-from .models import Post, Replie
+from .models import AddToCart, Post, Replie
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -157,16 +157,27 @@ def reviews(request):
 
 @ensure_csrf_cookie
 def cart(request):
-    N = 152
-    sample = get_top_n().sample(N).to_dict('records')
-    return render(request, 'mainapp/cart.html', {'book': sample})
+    book = set(AddToCart.objects.filter(
+        user=request.user).values_list('bookid', flat=True))
+    book_id = list(book)
+    books = get_book_dict(book_id)
+    total = 0
+    for book in books:
+        total += book['book_price']
+
+    return render(request, 'mainapp/cart.html', {'books': books, 'total': total, 'count': len(books)})
 
 
 @ensure_csrf_cookie
 def checkout(request):
-    N = 152
-    sample = get_top_n().sample(N).to_dict('records')
-    return render(request, 'mainapp/checkout.html', {'book': sample})
+    book = set(AddToCart.objects.filter(
+        user=request.user).values_list('bookid', flat=True))
+    book_id = list(book)
+    books = get_book_dict(book_id)
+    total = 0
+    for book in books:
+        total += book['book_price']
+    return render(request, 'mainapp/checkout.html', {'books': books, 'total': total, 'count': len(books)})
 
 
 def reviews(request):

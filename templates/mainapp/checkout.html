@@ -33,7 +33,7 @@ Cart
                         <input class="form-control" type="text" name="city" placeholder="City..">
                     </div>
                     <div class="form-field">
-                        <input class="form-control" type="text" name="state" placeholder="Contact no..">
+                        <input class="form-control" type="text" name="contact" placeholder="Contact no..">
                     </div>
 
                 </div>
@@ -56,22 +56,78 @@ Cart
             <hr>
             <h3>Order Summary</h3>
             <hr>
+            {% for book in books %}
+
             <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="{% static 'mainapp/png/Images/vengeance.jpg' %}">
+                <div style="flex:2"><img class="checkout-image" src="{{book.image_url}}">
                 </div>
                 <div style="flex:2">
-                    <p>Vengeance</p>
+                    {{book.original_title}}
                 </div>
                 <div style="flex:1">
-                    <p>$20.00</p>
+                    Rs. {{book.book_price}}
                 </div>
-                <div style="flex:1">
+                <!-- <div style="flex:1">
                     <p>x2</p>
-                </div>
+                </div> -->
             </div>
-            <h5>Items: 2</h5>
-            <h5>Total: $40</h5>
+            {% endfor %}
+
+            <h5>Items: {{count}}</h5>
+            <h5>Total: Rs.{{total}}</h5>
         </div>
     </div>
 </div>
 {% endblock main %}
+
+{% block script %}
+<script type="text/javascript">
+    var total = '{{total}}'
+
+
+    var form = document.getElementById('form')
+    form.addEventListener('submit', function (e) {
+        e.preventDefault()
+        console.log('Form Submitted...')
+        document.getElementById('form-button').classList.add("hidden");
+        submitFormData()
+    })
+
+    /*
+    document.getElementById('make-payment').addEventListener('click', function(e){
+        submitFormData()
+    })
+    */
+
+    function submitFormData() {
+        console.log('Payment button clicked')
+
+        var userFormData = {
+            'name': null,
+            'email': null,
+            'total': total,
+        }
+
+        var shippingInfo = {
+            'address': null,
+            'city': null,
+            'contact': null,
+        }
+
+
+        shippingInfo.address = form.address.value
+        shippingInfo.city = form.city.value
+        shippingInfo.contact = form.contact.value
+
+
+
+        userFormData.name = form.name.value
+        userFormData.email = form.email.value
+
+
+        console.log('Shipping Info:', shippingInfo)
+        console.log('User Info:', userFormData)
+
+    }
+</script>
+{% endblock script %}

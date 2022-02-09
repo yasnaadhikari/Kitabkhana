@@ -120,7 +120,7 @@ def save_book(request):
 
 
 def add_cart(request):
-    """AJAX request when user saves book"""
+    """AJAX request when user add book to cart"""
     if request.method == 'POST' and request.is_ajax():
         bookid = request.POST.get('bookid', None)
 
@@ -138,4 +138,17 @@ def remove_saved_book(request):
         saved_book = SaveForLater.objects.filter(
             user=request.user, bookid=bookid)
         saved_book.delete()
+        return JsonResponse({'success': True}, status=200)
+
+
+def remove_add_cart(request):
+    """AJAX request when user removes from cart"""
+    if request.method == 'POST' and request.is_ajax():
+        bookid = request.POST.get('bookid', None)
+        if is_bookid_invalid(bookid):
+            return JsonResponse({'success': False}, status=200)
+
+        add_cart = AddToCart.objects.filter(
+            user=request.user, bookid=bookid)
+        add_cart.delete()
         return JsonResponse({'success': True}, status=200)
