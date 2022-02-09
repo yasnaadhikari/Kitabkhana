@@ -13,7 +13,7 @@ Cart
     <div class="col-lg-12">
         <div class="box-element">
 
-            <a class="btn btn-outline-dark" href="">&#x2190; Continue Shopping</a>
+            <a class="btn btn-outline-dark" href="{% url 'index' %}">&#x2190; Continue Shopping</a>
 
             <br>
             <br>
@@ -23,7 +23,7 @@ Cart
                         <h5>Items: <strong id="count">{{count}}</strong></h5>
                     </th>
                     <th>
-                        <h5>Total:<strong id="total"> ${{total}}</strong></h5>
+                        <h5>Total:<strong id="total"> Rs.{{total}}</strong></h5>
                     </th>
                     <th>
                         <a style="float:right; margin:5px;" class="btn btn-success"
