@@ -18,18 +18,18 @@ Genre
 <div class="card-deck ">
     {% for book in genre_topbook %}
 
-    <div class="card col-sm-12 col-lg-3 " style="width: 300px; " data-book-id="{{ book.book_id }}"
-        onclick='bookDetails(this)'>
+    <div class="card col-sm-12 col-lg-3 " style="width: 300px; ">
         <div class="row no-gutters">
-            <img class="card-img  mt-4 " src="{{book.image_url}}" alt="book Card">
+            <img class="card-img  mt-4 " src="{{book.image_url}}" alt="book Card" data-book-id="{{ book.book_id }}"
+                onclick='bookDetails(this)'>
             <div class="card-body text-center">
                 <h5 class="card-title">{{book.original_title|truncatechars:35}}</h5>
                 <p class="card-text"><i>by {{book.authors|truncatechars:25}}</i></p>
                 <div class=" card-text"><i>Rs. {{book.book_price}}</i></div>
             </div>
         </div><br>
-        <a href="" class="btn more-details" "><i
-                class=" fa fa-shopping-cart"></i> Add to Cart</a>
+        <a href='javascript:;' class="btn more-details" onclick='addCart(this)' data-book-id="{{ book.book_id }}"><i
+                class="fa fa-shopping-cart"></i> Add to Cart</a>
         {% if user.is_authenticated %}
         <div class=' rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)"
             onclick='rateBook(this)' onmouseout='finishRate(this)' data-book-id="{{ book.book_id }}">
