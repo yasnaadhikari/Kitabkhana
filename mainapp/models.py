@@ -30,9 +30,9 @@ class SaveForLater(models.Model):
         return self.user.username.capitalize() + '- ' + get_book_title(self.bookid)
 
 
-# for the Reviews Section
 
 
+# for the Add Cart Model
 class AddToCart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bookid = models.IntegerField()
@@ -40,7 +40,7 @@ class AddToCart(models.Model):
     def __str__(self):
         return self.user.username.capitalize() + '- ' + get_book_title(self.bookid)
 
-
+# for the Reviews Section
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     post_id = models.AutoField
