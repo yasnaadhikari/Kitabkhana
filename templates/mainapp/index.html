@@ -330,7 +330,8 @@
                         <br><br>
                         <a href='javascript:;' class="btn more-details" onclick='addCart(this)'
                             data-book-id="{{ book.book_id }}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                        <!-- <a href="" class="btn more-details"><i class="fa fa-shopping-cart"></i> Add to Cart</a> -->
+                        
+                            <!-- <a href="" class="btn more-details"><i class="fa fa-shopping-cart"></i> Add to Cart</a> -->
 
                         {% if user.is_authenticated %}
                         <div class='rating-block' id='rating-block-{{ book.book_id }}' onmouseover="rateStart(this)"
