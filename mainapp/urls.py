@@ -11,6 +11,7 @@ urlpatterns = [
     path('discussion/<int:myid>/', views.discussion, name='discussion'),
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
+    path('done/', views.done, name="done"),
 
 
 ]

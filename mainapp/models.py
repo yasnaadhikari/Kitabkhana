@@ -1,3 +1,4 @@
+from ast import Add
 from django.db import models
 from django.contrib.auth.models import User
 from mainapp.helpers import get_book_title
@@ -39,6 +40,24 @@ class AddToCart(models.Model):
 
     def __str__(self):
         return self.user.username.capitalize() + '- ' + get_book_title(self.bookid)
+
+
+
+# for the checkout Model
+class Checkout(models.Model):
+    checkout_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    address= models.TextField()
+    city = models.CharField(max_length=10)
+    contact = models.CharField(default='', max_length=10)
+    books = models.CharField(max_length=100)
+    timestamp = models.DateTimeField(default=now)
+    total = models.IntegerField(default=0)
+    
+    
+
 
 # for the Reviews Section
 class Post(models.Model):

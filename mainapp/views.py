@@ -1,4 +1,4 @@
-from .models import AddToCart, Post, Replie
+from .models import AddToCart, Checkout,  Post, Replie
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -178,6 +178,31 @@ def checkout(request):
     for book in books:
         total += book['book_price']
     return render(request, 'mainapp/checkout.html', {'books': books, 'total': total, 'count': len(books)})
+
+
+
+def done(request):
+    print(request.POST)
+    book = set(AddToCart.objects.filter(
+        user=request.user).values_list('bookid', flat=True))
+
+    book_id = list(book)
+    books = get_book_dict(book_id)
+    total = 0
+    for book in books:
+        total += book['book_price']
+
+    data = request.POST
+    book_ids = [str(book) for book in book_id]
+
+    checkout =  Checkout(user = request.user, books=','.join(book_ids), total=total, name=data['name'], address=data['address'], email=data['email'], city=data['city'], contact=data['contact'])
+    checkout.save()
+
+    AddToCart.objects.filter(user=request.user).delete()
+
+    return render(request, 'mainapp/index.html', {'books': books, 'total': total, 'count': len(books)})
+   
+
 
 
 def reviews(request):

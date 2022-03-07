@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from mainapp.helpers import is_bookid_invalid, is_rating_invalid, get_rated_bookids
+from django.shortcuts import render
+from mainapp.helpers import get_book_dict, is_bookid_invalid, is_rating_invalid, get_rated_bookids
 import BookRecSystem.settings as settings
 from mainapp.models import UserRating, SaveForLater, AddToCart
 from bs4 import BeautifulSoup
@@ -128,6 +129,8 @@ def add_cart(request):
         return JsonResponse({'success': True}, status=200)
 
 
+
+
 def remove_saved_book(request):
     """AJAX request when user removes book"""
     if request.method == 'POST' and request.is_ajax():
@@ -152,3 +155,20 @@ def remove_add_cart(request):
             user=request.user, bookid=bookid)
         add_cart.delete()
         return JsonResponse({'success': True}, status=200)
+
+def checkout_cart(request):
+    book = set(AddToCart.objects.filter(
+    user=request.user).values_list('bookid', flat=True))
+    user = request.user
+
+    book_id = list(book)
+    books = get_book_dict(book_id)
+    total = 0
+    for book in books:
+        total += book['book_price']
+
+    # checkout = Checkout(user=user, books=books)
+    # checkout.save()
+
+    return render(request, 'mainapp/index.html', {'books': books, 'total': total, 'count': len(books)})
+   

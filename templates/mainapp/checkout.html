@@ -12,7 +12,8 @@ Cart
 <div class="row">
     <div class="col-lg-6">
         <div class="box-element" id="form-wrapper">
-            <form id="form">
+            <form id="form" action="/done/" method="POST">
+                {% csrf_token %}
                 <div id="user-info">
                     <div class="form-field">
                         <input required class="form-control" type="text" name="name" placeholder="Name..">
@@ -35,7 +36,7 @@ Cart
                     <div class="form-field">
                         <input class="form-control" type="text" name="contact" placeholder="Contact no..">
                     </div>
-
+                    <input type="text" value="{{books}}" name="books" hidden/>
                 </div>
 
                 <hr>
@@ -81,7 +82,7 @@ Cart
 {% endblock main %}
 
 {% block script %}
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var total = '{{total}}'
 
 
@@ -129,5 +130,5 @@ Cart
         console.log('User Info:', userFormData)
 
     }
-</script>
+</script> -->
 {% endblock script %}
