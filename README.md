@@ -53,7 +53,7 @@ The Image says it All.
 ![KitabKhana flowchart](https://user-images.githubusercontent.com/35715537/148672915-f3abf4c7-fc31-49a5-92f9-71156307afa4.png)
 
 
-### Project Structure 💁‍♀️
+### Project Structure
 ```
 Kitabkhana
 │   
