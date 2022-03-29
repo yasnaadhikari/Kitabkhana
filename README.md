@@ -9,13 +9,12 @@
     - [Final Result](#final-result-)
 - [Project Structure](#project-structure-%EF%B8%8F)
 - [To Do](#to-do-)
-- [Notebooks and Files](#notebooks-and-files-)
 - [References](#references-)
 
-### Objective ✍
+### Objective
 Our objective is to build an application for all Book Lovers like us out there where all you have to do is rate some of your favorite books and the application will give you some more books that you may love to read.
 
-### Dataset 🧾
+### Dataset
 The Dataset that we used for this task is the [goodbooks-10k](https://github.com/zygmuntz/goodbooks-10k) dataset. It consists of 10k books with a total of 6 million ratings. There are some more huge datasets such as [Book-Crossings](http://www2.informatik.uni-freiburg.de/~cziegler/BX/) but they are kinda old.
 
 **Dataset Structure** 
@@ -28,14 +27,14 @@ GoodBooks10k
     ├── to_read.csv       # Contains book-ids marked as to-read by user  
 ```
 
-### PreProcessing 🛠
+### PreProcessing
 Since this is a recommendation problem, we have to make sure that the `books.csv` is as clean as possible and only consider those ratings whose book-id is present, same goes for vice versa.
 
 More Cleaning for `books.csv`
 - Missing Book Image URLs
 - Book & Rating Duplicates
 
-### Model Exploration 🤯
+### Model Exploration
 For Recommendation Problems there are multiple approaches that are possible:
 - Embedding Matrix
 - Singular Matrix Decomposition
@@ -48,14 +47,13 @@ We used the book embedding as a representation of the books to infer underlying 
 
 - **Term Frequency** - This method is like a helper function to above, it shines where embedding fails. Term Frequency takes into account the tokens in a book title be it the book title itself, the name of authors and also rating. Taking into consideration it finds books which match closely with the tokens in the rated book.
 
-> 🛠 Code for every step can be found in the [Notebooks and Files](#notebooks-and-files) Section.
 
-### Final Result 😁
+### Final Result
 The Image says it All.
 ![KitabKhana flowchart](https://user-images.githubusercontent.com/35715537/148672915-f3abf4c7-fc31-49a5-92f9-71156307afa4.png)
 
 
-### Project Structure 💁‍♀️
+### Project Structure
 ```
 Kitabkhana
 │   
@@ -90,14 +88,14 @@ Kitabkhana
                
 ```            
 
-### To Do 🎯
+### To Do
 - [X] Display Popular Books Among Users
 - [X] Checkout section
 - [X] Add to cart
 - [X] Use a Better Approach than Count Vectorizer
 
 
-### References 😇
+### References
 
 - [Dataset](https://github.com/zygmuntz/goodbooks-10k)
 - [Count Vectorizer](https://www.kaggle.com/sasha18/recommend-books-using-count-tfidf-on-titles)
